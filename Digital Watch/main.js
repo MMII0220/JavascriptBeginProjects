@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  const carouselContent = document.querySelector('.carousel-content');
   const images = document.querySelectorAll('.carousel img');
 
   let currentIndex = 0;

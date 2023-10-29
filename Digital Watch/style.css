@@ -9,7 +9,6 @@
 .carousel-content {
   display: flex;
   overflow: hidden;
-  height: 89vh;
 }
 
 .carousel img {

@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Image Carousel</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <script src="./main.js"></script>
+    <div class="carousel">
+      <button id="prevBtn">Previous</button>
+      <div class="carousel-content">
+        <img src="./img/1.avif" alt="Image 1" />
+        <img src="./img/2.avif" alt="Image 2" />
+        <img src="./img/3.avif" alt="Image 3" />
+        <!-- Добавьте больше изображений по мере необходимости -->
+      </div>
+      <button id="nextBtn">Next</button>
+    </div>
+    <script src="main.js"></script>
   </body>
 </html>
