@@ -1,28 +1,25 @@
 window.addEventListener('load', () => {
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const carouselContent = document.querySelector('.carousel-content');
-  const images = document.querySelectorAll('.carousel img');
-
-  let currentIndex = 0;
-
-  function showImage(index) {
-    images.forEach((img) => (img.style.display = 'none'));
-    images[index].style.display = 'block';
+  function formatTime(time) {
+    return time < 10 ? '0' + time : time;
   }
+  function updateClock() {
+    let date = new Date();
+    let dayNumber = date.getDay();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let ampm = hour >= 12 ? 'PM' : 'AM';
+    let seconds = date.getSeconds();
+    let dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
+    document.getElementById('day').textContent = dayNames[dayNumber];
+    document.getElementById('hour').textContent = formatTime(hour);
+    document.getElementById('minute').textContent = formatTime(minute);
+    document.getElementById('seconds').textContent = formatTime(seconds);
+    document.getElementById('ampm').textContent = ampm;
+
+    setTimeout(updateClock, 1000);
   }
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  }
-
-  prevBtn.addEventListener('click', prevImage);
-  nextBtn.addEventListener('click', nextImage);
-
-  showImage(currentIndex);
+  updateClock();
 });
+
+// window.addEventListener('load', calculateTime);
