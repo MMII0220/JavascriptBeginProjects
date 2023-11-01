@@ -76,6 +76,9 @@ body {
 #groceryItems .completed {
   text-decoration: line-through;
 }
+.fa-eraser {
+  color: rgb(190, 4, 4) !important;
+}
 
 @media (max-width: 768px) {
   #groceryItems {
