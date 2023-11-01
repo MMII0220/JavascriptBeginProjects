@@ -35,6 +35,7 @@ body {
 
 .btn,
 .btn-operator {
+  font-size: large;
   width: 24%;
   height: 45px;
   border-radius: 1px;
