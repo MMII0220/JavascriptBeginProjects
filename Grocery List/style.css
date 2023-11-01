@@ -71,6 +71,7 @@ body {
 
 #groceryItems div {
   font-style: italic;
+  font-family: math;
   font-size: xx-large;
 }
 #groceryItems .completed {
