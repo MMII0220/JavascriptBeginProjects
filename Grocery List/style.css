@@ -62,10 +62,19 @@ body {
   gap: 15px;
   width: 75%;
   font-size: 1.5rem;
+  margin-top: 30px;
 }
 
 #groceryItems h2 {
   cursor: pointer;
+}
+
+#groceryItems div {
+  font-style: italic;
+  font-size: xx-large;
+}
+#groceryItems .completed {
+  text-decoration: line-through;
 }
 
 @media (max-width: 768px) {
