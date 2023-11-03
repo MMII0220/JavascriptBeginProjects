@@ -1,3 +1,5 @@
+// const { func } = require('prop-types');
+
 window.addEventListener('DOMContentLoaded', () => {
   const myTaskText = document.querySelector('#input'),
     btnToAddTask = document.querySelector('.header_btn-add_task'),
@@ -5,17 +7,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   btnToAddTask.addEventListener('click', handleAddTask); // for btn
 
-  myTaskText.addEventListener('keydown', handleAddTask); // for enter
-
-  function handleAddTask(event) {
-    // after clicking btn or pushing enter add task
-    if (
-      myTaskText.value.trim() != '' &&
-      (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter'))
-    ) {
-      addTaskList(myTaskText.value);
-      myTaskText.value = '';
+  myTaskText.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      handleAddTask();
     }
+  }); // for enter
+
+  function handleAddTask() {
+    if (myTaskText.value.trim() != '') {
+      addTaskList(myTaskText.value);
+    }
+    myTaskText.value = '';
   }
 
   function addTaskList(myTaskText) {
