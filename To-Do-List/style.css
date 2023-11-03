@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 * {
   padding: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Fredoka One", cursive;
+  font-family: 'Fredoka One', cursive;
   background-image: linear-gradient(to right, #e22865, #37adcd);
   color: #fff;
 }
@@ -53,6 +53,15 @@ body {
 .user_input input:focus {
   box-shadow: 0 0 5px #e22865;
   border: 1px solid #e22865;
+}
+
+.item button {
+  background: none;
+  border: none;
+  border: 1px solid#880000;
+  background-color: #ff5f5f;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
 .user_input button {
