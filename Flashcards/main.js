@@ -9,7 +9,10 @@ window.addEventListener('DOMContentLoaded', () => {
   const questionField = document.querySelector('#question'),
     answerField = document.querySelector('#answer');
 
+  const allFlashCards = document.querySelector('#flashcards');
+
   btnAddFlashCard.addEventListener('click', () => {
+    // button to show cards adder
     cardToFillWithData.style.display = 'block';
 
     closeCard.addEventListener('click', () => {
@@ -17,7 +20,13 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  btnDeleteFlashCards.addEventListener('click', () => {
+    // btn to clean all cards
+    allFlashCards.textContent = '';
+  });
+
   saveCard.addEventListener('click', () => {
+    // saving our cards with question and answer
     addFlashCard();
   });
 
@@ -33,17 +42,17 @@ window.addEventListener('DOMContentLoaded', () => {
       'style',
       'border-top:1px solid red; padding: 15px; margin-top:30px'
     );
-    question.textContent = text.my_question;
+    question.textContent = questionField.value;
 
     answer.setAttribute('style', 'text-align:center; display:none; color:red');
-    answer.textContent = text.my_answer;
+    answer.textContent = answerField.value;
 
-    del.className = 'fas fa-minus';
-    del.addEventListener('click', () => {
-      contentArray.splice(delThisIndex, 1);
-      localStorage.setItem('items', JSON.stringify(contentArray));
-      window.location.reload();
-    });
+    // del.className = 'fas fa-minus';
+    // del.addEventListener('click', () => {
+    //   contentArray.splice(delThisIndex, 1);
+    //   localStorage.setItem('items', JSON.stringify(contentArray));
+    //   window.location.reload();
+    // });
 
     flashcard.appendChild(question);
     flashcard.appendChild(answer);
