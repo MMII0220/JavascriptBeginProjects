@@ -25,47 +25,31 @@ window.addEventListener('load', () => {
     option2.textContent = generateRandomNumber();
     option3.textContent = generateRandomNumber();
 
-    let allOptions = [],
-      switchOptions = [];
-
-    allOptions = [
-      convertStrToNum(option1),
-      convertStrToNum(option2),
-      convertStrToNum(option3),
-    ];
+    const allOptions = [option1, option2, option3].map(convertStrToNum);
+    const switchOptions = allOptions.slice();
 
     for (i = allOptions.length; i--; ) {
       switchOptions.push(allOptions.splice(Math.floor(Math.random() * (i + 1)), 1)[0]);
     }
 
-    option1.innerHTML = switchOptions[0];
-    option2.innerHTML = switchOptions[1];
-    option3.innerHTML = switchOptions[2];
+    [option1, option2, option3].forEach((option, index) => {
+      option.innerHTML = switchOptions[index];
+    });
   }
 
-  option1.addEventListener('click', () => {
-    if (sumOfNums() == parseInt(option1.textContent)) {
+  function checkAnswers(option) {
+    if (sumOfNums() == parseInt(option.textContent)) {
       setRandomNumber();
     } else {
       audio.play();
     }
-  });
+  }
 
-  option2.addEventListener('click', () => {
-    if (sumOfNums() == parseInt(option2.textContent)) {
-      setRandomNumber();
-    } else {
-      audio.play();
-    }
-  });
+  option1.addEventListener('click', () => checkAnswers(option1));
 
-  option3.addEventListener('click', () => {
-    if (sumOfNums() == parseInt(option3.textContent)) {
-      setRandomNumber();
-    } else {
-      audio.play();
-    }
-  });
+  option2.addEventListener('click', () => checkAnswers(option2));
+
+  option3.addEventListener('click', () => checkAnswers(option3));
 
   setRandomNumber();
 });

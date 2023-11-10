@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
     option3 = document.querySelector('#option3'),
     audio = document.querySelector('#myAudio');
 
-  function divideOfNums() {
+  function substractOfNums() {
     return parseInt(num1.textContent) - parseInt(num2.textContent);
   }
 
@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
   function setRandomNumber() {
     num1.textContent = generateRandomNumber();
     num2.textContent = generateRandomNumber();
-    option1.textContent = divideOfNums();
+    option1.textContent = substractOfNums();
     option2.textContent = generateRandomNumber();
     option3.textContent = generateRandomNumber();
 
@@ -43,29 +43,19 @@ window.addEventListener('load', () => {
     option3.innerHTML = switchOptions[2];
   }
 
-  option1.addEventListener('click', () => {
-    if (divideOfNums() == parseInt(option1.textContent)) {
+  function checkAnswers(option) {
+    if (substractOfNums() == parseInt(option.textContent)) {
       setRandomNumber();
     } else {
       audio.play();
     }
-  });
+  }
 
-  option2.addEventListener('click', () => {
-    if (divideOfNums() == parseInt(option2.textContent)) {
-      setRandomNumber();
-    } else {
-      audio.play();
-    }
-  });
+  option1.addEventListener('click', () => checkAnswers(option1));
 
-  option3.addEventListener('click', () => {
-    if (divideOfNums() == parseInt(option3.textContent)) {
-      setRandomNumber();
-    } else {
-      audio.play();
-    }
-  });
+  option2.addEventListener('click', () => checkAnswers(option2));
+
+  option3.addEventListener('click', () => checkAnswers(option3));
 
   setRandomNumber();
 });

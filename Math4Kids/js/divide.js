@@ -45,29 +45,19 @@ window.addEventListener('load', () => {
     option3.innerHTML = switchOptions[2];
   }
 
-  option1.addEventListener('click', () => {
-    if (divideOfNums() == parseFloat(option1.textContent)) {
+  function checkAnswers(option) {
+    if (divideOfNums() == parseFloat(option.textContent)) {
       setRandomNumber();
     } else {
       audio.play();
     }
-  });
+  }
 
-  option2.addEventListener('click', () => {
-    if (divideOfNums() == parseFloat(option2.textContent)) {
-      setRandomNumber();
-    } else {
-      audio.play();
-    }
-  });
+  option1.addEventListener('click', () => checkAnswers(option1));
 
-  option3.addEventListener('click', () => {
-    if (divideOfNums() == parseFloat(option3.textContent)) {
-      setRandomNumber();
-    } else {
-      audio.play();
-    }
-  });
+  option2.addEventListener('click', () => checkAnswers(option2));
+
+  option3.addEventListener('click', () => checkAnswers(option3));
 
   setRandomNumber();
 });
