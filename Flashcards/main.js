@@ -47,13 +47,6 @@ window.addEventListener('DOMContentLoaded', () => {
     answer.setAttribute('style', 'text-align:center; display:none; color:red');
     answer.textContent = answerField.value;
 
-    // del.className = 'fas fa-minus';
-    // del.addEventListener('click', () => {
-    //   contentArray.splice(delThisIndex, 1);
-    //   localStorage.setItem('items', JSON.stringify(contentArray));
-    //   window.location.reload();
-    // });
-
     flashcard.appendChild(question);
     flashcard.appendChild(answer);
     flashcard.appendChild(del);
