@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
 * {
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   background-color: black;
   color: white;
   overflow-x: hidden;
@@ -73,7 +73,7 @@ input:focus {
   color: orange;
 }
 
-#grid {
+.grid {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
