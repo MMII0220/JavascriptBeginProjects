@@ -1,6 +1,8 @@
+'use strict';
+
 window.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('input'),
-    grid = document.getElementsByClassName('grid')[0];
+    grid = document.querySelector('.grid');
 
   window.addEventListener('load', dayNightMode);
 
@@ -19,29 +21,39 @@ window.addEventListener('DOMContentLoaded', () => {
 
     fetch(url)
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          alert(response.status);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Statsu: ${response.status}`);
         }
+        return response.json();
       })
 
       .then((data) => {
-        const imageNodes = [];
-        for (let i = 0; i < data.results.length; i++) {
-          imageNodes[i] = document.createElement('div');
-          imageNodes[i].className = 'img';
-          imageNodes[i].style.backgroundImage = 'url(' + data.results[i].urls.raw + ')';
-          imageNodes[i].addEventListener('dblclick', () => {
-            window.open(data.results[i].links.download, '_blank');
-          });
-          grid.appendChild(imageNodes[i]);
-        }
+        const imageNodes = data.results.map(createImageNode);
+        appendImagesToGrid(imageNodes);
+      })
+      .catch((error) => {
+        console.error('Error fetching images:', error);
       });
   }
 
   function removeImages() {
     grid.innerHTML = '';
+  }
+
+  function createImageNode(photo) {
+    const imageNode = document.createElement('div');
+    imageNode.className = 'img';
+    imageNode.style.backgroundImage = `url(${photo.urls.raw})`;
+    imageNode.addEventListener('dblclick', () => {
+      window.open(photo.links.download, '_blank');
+    });
+    return imageNode;
+  }
+
+  function appendImagesToGrid(images) {
+    images.forEach((image) => {
+      grid.appendChild(image);
+    });
   }
 
   function dayNightMode() {
