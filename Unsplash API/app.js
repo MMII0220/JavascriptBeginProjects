@@ -1,17 +1,22 @@
-'use strict';
-
 window.addEventListener('DOMContentLoaded', () => {
-  const input = document.getElementById('input'),
-    grid = document.querySelector('.grid');
+  'use strict';
 
-  window.addEventListener('load', dayNightMode);
+  const input = document.getElementById('input'), // what we are searching for
+    search_icon = document.querySelector('.fa-search'),
+    grid = document.querySelector('.grid'); // where our photos display
+
+  window.addEventListener('load', dayNightMode); // when loaded it will be black or white depending on time
 
   input.addEventListener('keydown', (event) => {
+    // when we click enter searching starts
     if (event.key == 'Enter') {
       loadImg();
     }
   });
 
+  search_icon.addEventListener('click', loadImg); // when we click icon searching starts
+
+  // out api for generating photos
   function loadImg() {
     removeImages();
     const url =
@@ -28,6 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
       })
 
       .then((data) => {
+        console.log(data);
         const imageNodes = data.results.map(createImageNode);
         appendImagesToGrid(imageNodes);
       })
@@ -45,17 +51,20 @@ window.addEventListener('DOMContentLoaded', () => {
     imageNode.className = 'img';
     imageNode.style.backgroundImage = `url(${photo.urls.raw})`;
     imageNode.addEventListener('dblclick', () => {
+      // click two time on image to open it, in new tab
       window.open(photo.links.download, '_blank');
     });
-    return imageNode;
+    return imageNode; // returning created fully element with class image
   }
 
+  // appending element on screen
   function appendImagesToGrid(images) {
     images.forEach((image) => {
       grid.appendChild(image);
     });
   }
 
+  // changing screen color
   function dayNightMode() {
     const date = new Date();
     const hour = date.getHours();
