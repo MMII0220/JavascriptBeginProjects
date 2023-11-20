@@ -24,10 +24,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const typewriter = () => {
     if (flag) {
       loadQuote();
-      quoteArray[index] += '';
+      quoteArray[index] += ''; // very important, without this on screen would appear undefined
       flag = false;
     }
 
+    // Outputing each word one by one
     document.querySelector('#quote').innerHTML = `${quoteArray[index].substring(
       0,
       textPosition
